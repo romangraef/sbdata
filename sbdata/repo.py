@@ -29,7 +29,7 @@ def bare_name(name: str) -> str:
 
 
 def load_item(item: pathlib.Path):
-    with item.open('r') as fp:
+    with item.open('r', encoding='utf-8') as fp:
         data = json.load(fp)
         item_list[data['internalname']] = Item(data['displayname'], data['itemid'], data['internalname'], data['lore'])
 
