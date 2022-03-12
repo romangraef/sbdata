@@ -4,7 +4,8 @@ import sys
 from typing import Any
 
 import questionary
-
+import rich
+import rich.table
 from sbdata.repo import Item
 from sbdata.task import Arguments, tasks
 
@@ -19,6 +20,12 @@ class ObjectEncoder(json.JSONEncoder):
         return super().default(o)
 
 
+def render_thing(i):
+    if isinstance(i, Item):
+        return i.internalname
+    return str(i)
+
+
 def main():
     args = Arguments(sys.argv)
     task = args.get_value(
@@ -30,6 +37,22 @@ def main():
     data = task.run(args)
     if args.has_flag('json'):
         print(json.dumps(data, cls=ObjectEncoder))
+    if args.has_flag('explore'):
+        if not (isinstance(data, list) and len(data) > 0 and dataclasses.is_dataclass(data[0])):
+            print('Cannot explore this')
+            return
+        console = rich.get_console()
+        keys = list(data[0].__dict__.keys())
+        query = ''
+        while True:
+            table = rich.table.Table()
+            for k in keys:
+                table.add_column(k)
+            for item in data:
+                if any(query in render_thing(val).casefold() for val in item.__dict__.values()):
+                    table.add_row(*[render_thing(getattr(item, k)) for k in keys])
+            console.print(table)
+            query = console.input("Search: ")
 
 
 if __name__ == '__main__':

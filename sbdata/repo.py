@@ -40,7 +40,7 @@ def find_item_by_name(name: str) -> typing.Optional[Item]:
            if item.internalname.casefold() == name
            or bare_name(item.displayname) in name
            or (item.itemid == 'minecraft:enchanted_book'
-               and name in bare_name(item.lore[0]))]
+               and bare_name(item.lore[0]).endswith(name))]
     if pot:
         return pot[0]
     return None

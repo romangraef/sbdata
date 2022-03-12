@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "2f97b2115fdfc808a8b0d6e47b772ed9a39aa5e4a87cf2c2846103de8d070412"
+            "sha256": "d800669875d1b92f0d8196a0fe4a8dd6302fdbc9bd9ddde374263bcd15e76aec"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -38,6 +38,13 @@
             ],
             "index": "pypi",
             "version": "==8.0.4"
+        },
+        "commonmark": {
+            "hashes": [
+                "sha256:452f9dc859be7f06631ddcb328b6919c67984aca654e5fefb3914d54691aed60",
+                "sha256:da2f38c92590f83de410ba1a3cbceafbc74fee9def35f9251ba9a971d6d66fd9"
+            ],
+            "version": "==0.9.1"
         },
         "idna": {
             "hashes": [
@@ -89,6 +96,14 @@
             "markers": "python_full_version >= '3.6.2'",
             "version": "==3.0.28"
         },
+        "pygments": {
+            "hashes": [
+                "sha256:44238f1b60a76d78fc8ca0528ee429702aae011c265fe6a8dd8b63049ae41c65",
+                "sha256:4e426f72023d88d03b2fa258de560726ce890ff3b630f88c21cbb8b2503b8c6a"
+            ],
+            "markers": "python_version >= '3.5'",
+            "version": "==2.11.2"
+        },
         "questionary": {
             "hashes": [
                 "sha256:600d3aefecce26d48d97eee936fdb66e4bc27f934c3ab6dd1e292c4f43946d90",
@@ -104,6 +119,14 @@
             ],
             "index": "pypi",
             "version": "==2.27.1"
+        },
+        "rich": {
+            "hashes": [
+                "sha256:14bfd0507edc633e021b02c45cbf7ca22e33b513817627b8de3412f047a3e798",
+                "sha256:fdcd2f8d416e152bcf35c659987038d1ae5a7bd336e821ca7551858a4c7e38a9"
+            ],
+            "index": "pypi",
+            "version": "==12.0.0"
         },
         "urllib3": {
             "hashes": [
