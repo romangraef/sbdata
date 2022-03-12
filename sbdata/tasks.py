@@ -36,7 +36,8 @@ default_chest_costs: dict[str, dict[int, int]] = dict(
 @register_task("Fetch Dungeon Loot")
 def fetch_dungeon_loot(args: Arguments):
     items = []
-    for floor in get_wiki_sources_by_title(*[f'Template:Catacombs Floor {f} Loot Master' for f in ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII']]).values():
+    for floor_name, floor in get_wiki_sources_by_title(*[f'Template:Catacombs Floor {f} Loot Master' for f in ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII']]).items():
+        print(f"Page: {floor_name}")
         for template in floor.filter_templates():
             if template.name.strip() == 'Dungeon Chest Table/Row':
                 item = None
@@ -69,4 +70,4 @@ def fetch_dungeon_loot(args: Arguments):
                         defaults = default_chest_costs[chest]
                         cost = defaults[min(f for f in defaults.keys() if f >= ifloor)]
                     items.append(DungeonDrop(item, ifloor, chest, cost, drop_chances))
-        return items
+    return items
