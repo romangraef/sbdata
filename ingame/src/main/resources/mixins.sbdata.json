@@ -1,0 +1,7 @@
+{
+	"compatibilityLevel": "JAVA_8",
+	"refmap": "mixins.neatsb.refmap.json",
+	"package": "moe.nea89.sbdata.mixins",
+	"mixins": [
+	]
+}

@@ -1,0 +1,18 @@
+[
+	{
+		"modid": "sbdata",
+		"name": "SBData Collection",
+		"description": "",
+		"version": "${modversion}",
+		"mcversion": "${mcversion}",
+		"url": "https://github.com/romangraef/sbdata",
+		"updateUrl": "",
+		"authorList": [
+			"nea89o"
+		],
+		"credits": "",
+		"logoFile": "",
+		"screenshots": [],
+		"dependencies": []
+	}
+]

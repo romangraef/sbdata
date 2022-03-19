@@ -38,7 +38,7 @@ def find_item_by_name(name: str) -> typing.Optional[Item]:
     name = bare_name(name)
     pot = [item for item in item_list.values()
            if item.internalname.casefold() == name
-           or bare_name(item.displayname) in name
+           or bare_name(item.displayname) == name
            or (item.itemid == 'minecraft:enchanted_book'
                and bare_name(item.lore[0]).endswith(name))]
     if pot:
