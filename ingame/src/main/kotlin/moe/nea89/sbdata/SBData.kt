@@ -1,6 +1,7 @@
 package moe.nea89.sbdata
 
 import moe.nea89.sbdata.dungeon.DungeonMapCoordinates
+import moe.nea89.sbdata.souls.SoulESP
 import net.minecraftforge.client.ClientCommandHandler
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod
@@ -34,6 +35,7 @@ class SBData {
     @Mod.EventHandler
     fun init(event: FMLInitializationEvent) {
         MinecraftForge.EVENT_BUS.register(DungeonMapCoordinates)
+        MinecraftForge.EVENT_BUS.register(SoulESP)
     }
 
     @Mod.EventHandler

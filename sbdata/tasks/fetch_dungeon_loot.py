@@ -71,3 +71,4 @@ def fetch_dungeon_loot(args: Arguments):
                         cost = defaults[min(f for f in defaults.keys() if f >= ifloor)]
                     items.append(DungeonDrop(item, ifloor, chest, cost, drop_chances))
     return items
+

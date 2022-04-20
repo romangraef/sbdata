@@ -40,6 +40,9 @@ class Arguments:
             return question.ask()
         return value
 
+    def get_arg(self, label: str, arg_name: str, mapper: typing.Callable[[str], _T]) -> _T:
+        return mapper(self.get_value(label, self.args.get(arg_name), questionary.text('Missing ' + label)))
+
     def has_flag(self, param: str) -> bool:
         return param in self.flags
 

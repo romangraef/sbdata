@@ -9,6 +9,8 @@ mwparserfromhell = "*"
 click = "*"
 questionary = "*"
 rich = "*"
+numpy = "*"
+sklearn = "*"
 
 [dev-packages]
 mypy = "*"

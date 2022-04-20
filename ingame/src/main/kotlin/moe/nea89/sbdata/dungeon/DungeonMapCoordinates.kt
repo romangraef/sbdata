@@ -14,6 +14,8 @@ import java.awt.datatransfer.StringSelection
 
 object DungeonMapCoordinates {
 
+    var logMarkers = false
+
     init {
         Commands.addSubCommand("map") {
             when (args.firstOrNull()) {
@@ -32,6 +34,25 @@ object DungeonMapCoordinates {
                             )
                             reply("Copied data to clipboard.")
                         }
+                    }
+                }
+                "logmarkers" -> {
+                    if (args.size == 2) {
+                        when (args[1]) {
+                            "on" -> {
+                                logMarkers = true
+                                reply("Turned on marker order logging")
+                            }
+                            "off" -> {
+                                logMarkers = false
+                                reply("Turned off marker order logging")
+                            }
+                            else -> {
+                                reply("logmarkers <on/off>")
+                            }
+                        }
+                    } else {
+                        reply("Marker order logging is ${if (logMarkers) "on" else "off"}.")
                     }
                 }
                 "load" -> {
@@ -89,7 +110,15 @@ object DungeonMapCoordinates {
             .firstNotNullOfOrNull { FLOOR_REGEX.find(it) }
             ?.let { it.groupValues[1] } ?: return
         logPosition(player, playerMarker, floor)
+        if (logMarkers) {
+            println("-----------")
+            mapData.mapDecorations.entries.sortedBy { it.key }.forEach { (key, value) ->
+                println(" $key -> ${value.func_176112_b().toInt() / 2 + 64} ${value.func_176113_c().toInt() / 2 + 64}")
+            }
+            println("-----------")
+        }
     }
+
 
     fun logPosition(player: EntityPlayerSP, playerMarker: Vec4b, floor: String) {
         val coordList = coords.computeIfAbsent(floor) { hashSetOf() }
